@@ -72,7 +72,7 @@ function TelaStack() {
         name='TelaA'
         options={{title: 'Tela A'}}>
         {comp => (
-          <PassoStack {...comp} avancar ='TelaB'>
+          <PassoStack {...comp} avancar='TelaB' voltar>
             <TelaA/>
           </PassoStack>
         )}
@@ -80,13 +80,23 @@ function TelaStack() {
 
       <Stack.Screen
         name='TelaB'
-        options={{title: 'Tela B'}}
-        component={TelaB} />
+        options={{title: 'Tela B'}}>
+        {comp => (
+          <PassoStack {...comp} avancar='TelaC' voltar>
+            <TelaB />
+          </PassoStack>
+        )}
+      </Stack.Screen>
 
       <Stack.Screen
         name='TelaC'
-        options={{title: 'Tela C'}}
-        component={TelaC} />
+        options={{title: 'Tela C'}}>
+        {comp => (
+          <PassoStack {...comp} avancar='TelaA' voltar>
+            <TelaC />
+          </PassoStack>
+        )}
+      </Stack.Screen>
       </Stack.Navigator>
   )
 }
